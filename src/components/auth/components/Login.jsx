@@ -8,6 +8,7 @@ export const Login = () => {
   const { loading, handleChange, handleSubmitLogin } = useLogin();
   return (
     <div className="space-y-3">
+      <h1 className="block font-bold text-dark text-3xl mt-1 lg:text-5xl">Meetinscale.</h1>
       <Input
         name="email"
         placeholder="email@domain.com"
