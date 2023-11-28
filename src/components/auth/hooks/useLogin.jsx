@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { API_URL } from "@/config/apiUrl.js";
+import toast from "react-hot-toast";
 
 export const useLogin = () => {
   const [loading, setLoading] = useState(false);
@@ -30,10 +31,12 @@ export const useLogin = () => {
 
     if (res.status !== 200) {
       setLoading(false);
+      toast.error(data.message);
       return;
     }
 
     setLoading(false);
+    toast.success(data.message);
   }
 
   return {

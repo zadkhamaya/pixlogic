@@ -5,6 +5,7 @@ export const Provider = ({ children }) => {
   return (
     <NextUIProvider>
       <div>{children}</div>
+      <Toaster />
     </NextUIProvider>
   );
 };
