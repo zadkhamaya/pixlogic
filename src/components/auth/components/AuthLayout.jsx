@@ -8,8 +8,8 @@ export const AuthLayout = ({ children }) => {
         <div className="flex justify-center items-center h-screen">
           <Image
             src="/auth-v2-login-illustration-light.png"
-            width={700}
-            height={700}
+            width={500}
+            height={500}
             alt="Image"
           />
         </div>

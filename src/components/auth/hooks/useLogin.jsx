@@ -37,15 +37,15 @@ export const useLogin = () => {
       toast.error(data.message);
       return;
     }
+    
+    //set token ke cookie
+    Cookies.set("token", data.token);
 
     setLoading(false);
     toast.success(data.message);
 
-    //set token ke cookie
-    Cookies.set("token", data.token);
-
     //arahkan ke dashboard. akan masuk ke middleware dahulu
-    setTimeout(() => router.push("/dashboard", 2000));
+    setTimeout(() => router.push("/dashboard"), 2000);
   }
 
   return {
