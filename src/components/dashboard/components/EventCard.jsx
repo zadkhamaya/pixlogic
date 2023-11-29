@@ -36,8 +36,6 @@ export const EventCard = ({ id, image, name, description, date, location, partic
         ))}
       </div>}
       {participants.length > 0 ? <p>and others have joined this event.</p> : <p>No one has joined this event yet.</p>}
-
-
     </main>
   )
 }
