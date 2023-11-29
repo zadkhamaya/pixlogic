@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Header } from '../common/Header'
 import { EventCard } from './components/EventCard'
 import { Button } from '@nextui-org/react'

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import React from 'react';
 import { ParticipantCard } from "@/components/event/components/ParticipantCard";
 
+
 export const EventCard = ({ id, image, name, description, date, location, participants }) => {
   const router = useRouter()
 
