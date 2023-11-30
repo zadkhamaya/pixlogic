@@ -11,16 +11,19 @@ export const Header = () => {
     const router = useRouter();
     function handleLogout() {
         Cookies.remove("token")
+        Cookies.remove("user")
         router.push("/login")
 
     }
+
+    const user = JSON.parse(Cookies.get('user'));
 
     return (
         <main className=' flex justify-between p-3 border-b-2 border-violet-800'>
             <Image src="https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-2.svg" alt="logo" width={100} height={100} />
             <div className=' lg:flex w-1/5 justify-between items-center'>
                 <p>
-                    Hello, user123
+                    {user.name}
                 </p>
                 <Button color='primary' onClick={handleLogout}>Logout</Button>
             </div>

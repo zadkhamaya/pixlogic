@@ -16,7 +16,7 @@ export const Dashboard = (events) => {
             <section className=' p-5 m-auto'>
                 <h2 className=' text-4xl font-semibold pb-3'>My Events</h2>
                 <div className=' grid grid-cols-2 gap:1 lg:grid-cols-3 lg:gap-3'>
-                    {eventList.map(({ id, image, name: eventName, description, date, location }) => {
+                    {eventList && eventList.map(({ id, image, name: eventName, description, date, location }) => {
                         return <EventCard key={id} image={image && image.startsWith("http") ? image : urlImage} name={eventName} description={description} date={date} location={location}></EventCard>
                     })}
                 </div>
