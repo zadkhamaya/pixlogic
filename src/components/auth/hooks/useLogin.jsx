@@ -40,6 +40,7 @@ export const useLogin = () => {
     
     //set token ke cookie
     Cookies.set("token", data.token);
+    Cookies.set("user", JSON.stringify(data.data));
 
     setLoading(false);
     toast.success(data.message);
