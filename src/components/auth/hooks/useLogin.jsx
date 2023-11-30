@@ -22,7 +22,7 @@ export const useLogin = () => {
   async function handleSubmitLogin() {
     setLoading(true);
     const { email, password } = loginData;
-    const res = await fetch(`${API_URL}/login`, {
+    const res = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
