@@ -5,9 +5,9 @@ import { Button } from '@nextui-org/react'
 
 const urlImage = "https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-2.svg"
 
-export const Dashboard = (events) => {
+export const Dashboard = ({ children }) => {
 
-    const eventList = events.children
+    const eventList = children
 
     return (
         <div>
