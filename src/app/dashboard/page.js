@@ -1,5 +1,5 @@
 import { Dashboard } from '@/components/dashboard/Dashboard'
-import { EVENTS_URL } from '@/config/apiUrl'
+import { API_URL } from '@/config/apiUrl'
 import { cookies } from 'next/headers'
 import React from 'react'
 
@@ -8,7 +8,7 @@ export default async function Page() {
   const user = JSON.parse(value);
   async function getEventsByUser() {
     try {
-      const res = await fetch(`${EVENTS_URL}?userid=${user.id}`, { cache: "no-store" })
+      const res = await fetch(`${API_URL}/events?userid=${user.id}`, { cache: "no-store" })
       const { data } = await res.json()
       return data
     } catch (error) {
