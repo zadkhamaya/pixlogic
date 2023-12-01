@@ -27,7 +27,7 @@ export const Header = () => {
     return (
         <main className=' flex justify-between p-3 border-b-2 border-violet-800'>
             <Image src="https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-2.svg" alt="logo" width={100} height={100} priority  style={{height:'auto'}} />
-            <div className=' lg:flex w-1/5 justify-between items-center'>
+            <div className=' grid grid-cols-2 items-center'>
                 <p>
                     {user.name}
                 </p>
