@@ -1,9 +1,20 @@
+"use client"
+
 import { Button } from '@nextui-org/react'
+import Cookies from 'js-cookie'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 export const EventCard = ({ id, image, name, description, date, location, participants }) => {
-  participants = participants.slice(0, 3)
+  const showParticipants = participants.slice(0, 3)
+  const router = useRouter()
+
+
+  const handleClickEvent = () => {
+    Cookies.set('eventId', id)
+    router.push("/event")
+  }
   return (
     <main className='  bg-slate-300 rounded-lg p-3'>
 
@@ -13,12 +24,12 @@ export const EventCard = ({ id, image, name, description, date, location, partic
           <h1 className=' font-medium'>{name}</h1>
           <p>{description}</p>
           <p>{date} - {location}</p>
-          <Button color='primary'>View more...</Button>
+          <Button color='primary' onClick={handleClickEvent}>View more...</Button>
         </div>
       </div>
 
-      {participants && <div className=' grid grid-cols-3'>
-        {participants.map(participant => (
+      {showParticipants && <div className=' grid grid-cols-3'>
+        {showParticipants.map(participant => (
           <div key={participant.id}>
             <p>{participant.name}, </p>
           </div>
