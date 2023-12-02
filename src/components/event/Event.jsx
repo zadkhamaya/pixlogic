@@ -69,6 +69,7 @@ export const Event = ({ children }) => {
                         placeholder="Your Name"
                         onChange={handleChange}
                         value={joinData.name}
+                        isRequired
                     />
                     <Input
                         name="email"
@@ -76,6 +77,7 @@ export const Event = ({ children }) => {
                         placeholder="email@domain.com"
                         onChange={handleChange}
                         value={joinData.email}
+                        isRequired
                     />
                     <Input
                         name="phone"
@@ -83,8 +85,9 @@ export const Event = ({ children }) => {
                         placeholder="6281234567"
                         onChange={handleChange}
                         value={joinData.phone}
+                        isRequired
                     />
-                    <Button color="primary" isDisabled={loading} onClick={handleSubmitJoin}>Join Event</Button>
+                    <Button color="primary" isDisabled={loading || !joinData.name.trim() || !joinData.email.trim() || !joinData.phone.trim()} onClick={handleSubmitJoin}>Join Event</Button>
                 </Card>
             </div>
         </div>
