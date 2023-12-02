@@ -12,7 +12,7 @@ export const Event = ({ children }) => {
     const { loading, joinData, handleChange, handleSubmitJoin } = useJoin()
     const { id, image, name, description, location, date, author, participants, createdAt, updatedAt } = children
     return (
-        <div className='flex flex-col h-screen'>
+        <div className='flex flex-col'>
             <div className=' w-screen bg-purple-200 bg-opacity-75 flex items-center justify-center'>
                 <div className=' bg-purple-500 w-[80vw] bg-opacity-75 flex items-center justify-center rounded-3xl'>
                     <Image src={image && image.startsWith("http") ? image : urlImage} width={500} height={500} alt={"photo-event"}>
@@ -41,13 +41,16 @@ export const Event = ({ children }) => {
                         <h3 className=' font-semibold text-2xl'>Participants</h3>
                         {/* mapping data participants */}
                         <AvatarGroup className=' justify-start py-2' isGrid isBordered max={10}>
-                            {participants && participants.map(({ id, name }) => { return <ParticipantCard key={id} name={name}/> })}
+                            {participants && participants.map(({ id, name }) => { return <ParticipantCard key={id} name={name} /> })}
                         </AvatarGroup>
                     </div>
 
-                    <p>Hosted by {author.name}</p>
-                    <p>Created on {createdAt}</p>
-                    <p>Updated on {updatedAt}</p>
+                    <div>
+                        <p>Hosted by {author.name}</p>
+                        <p>Created on {createdAt}</p>
+                        <p>Updated on {updatedAt}</p>
+                    </div>
+
 
                 </section>
 
