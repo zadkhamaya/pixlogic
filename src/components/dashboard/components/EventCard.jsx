@@ -1,32 +1,42 @@
-import { Button } from '@nextui-org/react'
-import Image from 'next/image'
-import React from 'react'
+"use client"
+
+import { AvatarGroup, Button, Card, CardHeader, CardBody, Image } from "@nextui-org/react"
+import Cookies from 'js-cookie'
+import { useRouter } from 'next/navigation'
+import React from 'react';
+import { ParticipantCard } from "@/components/event/components/ParticipantCard";
+
 
 export const EventCard = ({ id, image, name, description, date, location, participants }) => {
-  participants = participants.slice(0, 3)
+  const router = useRouter()
+
+
+  const handleClickEvent = () => {
+    Cookies.set('eventId', id)
+    router.push("/event")
+  }
   return (
-    <main className='  bg-slate-300 rounded-lg p-3'>
+    <Card className="py-4">
+      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+        <small className="text-default-500">{date} - {location}</small>
+        <h4 className="font-bold text-large">{name}</h4>
+      </CardHeader>
+      <CardBody className="overflow-visible py-2">
+        <Image
+          alt="Card background"
+          className="object-cover rounded-xl"
+          src={image}
+          width={270}
+        />
+        <p className="text-tiny font-regular mt-3">{description}</p>
 
-      <div className=' flex gap-3'>
-        <Image className=' w-1/2' src={image} width={100} height={100} alt={name} />
-        <div>
-          <h1 className=' font-medium'>{name}</h1>
-          <p>{description}</p>
-          <p>{date} - {location}</p>
-          <Button color='primary'>View more...</Button>
-        </div>
-      </div>
-
-      {participants && <div className=' grid grid-cols-3'>
-        {participants.map(participant => (
-          <div key={participant.id}>
-            <p>{participant.name}, </p>
-          </div>
-        ))}
-      </div>}
-      {participants.length > 0 ? <p>and others have joined this event.</p> : <p>No one has joined this event yet.</p>}
-
-
-    </main>
+        <Button color='primary' className=" w-1/3 my-2" onClick={handleClickEvent}>View more...</Button>
+        <p className="text-tiny uppercase font-bold py-3">Participants</p>
+        <AvatarGroup className=' justify-start py-2 px-4' isBordered max={10}>
+          {participants && participants.map(({ id, name }) => { return <ParticipantCard key={id} name={name} /> })}
+        </AvatarGroup>
+        {participants.length < 1 && <p>Noone has joined this event.</p>}
+      </CardBody>
+    </Card>
   )
 }
