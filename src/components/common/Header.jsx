@@ -28,7 +28,7 @@ export const Header = () => {
         <Navbar shouldHideOnScroll >
             <NavbarBrand>
                 <Image src="https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-2.svg" alt="logo" width={100} height={100} priority style={{ height: 'auto' }} />
-                <p className="font-bold text-inherit">PixelEvent</p>
+                <p className="font-bold text-inherit">Meetinscale</p>
             </NavbarBrand>
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarItem>
