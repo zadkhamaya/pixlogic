@@ -1,10 +1,14 @@
+"use client"
+
 import { Button, Input } from '@nextui-org/react'
 import Image from 'next/image'
 import React from 'react'
+import { useJoin } from './hooks/useJoin'
 
 const urlImage = "https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-2.svg"
 
 export const Event = ({ children }) => {
+    const {loading, joinData, handleChange, handleSubmitJoin} = useJoin()
     const { id, image, name, description, location, date, author, participants, createdAt, updatedAt } = children
     return (
         <div className='flex flex-col h-screen'>
@@ -48,18 +52,24 @@ export const Event = ({ children }) => {
                         name="name"
                         type='text'
                         placeholder="Your Name"
+                        onChange={handleChange}
+                        value={joinData.name}
                     />
                     <Input
                         name="email"
                         type='email'
                         placeholder="email@domain.com"
+                        onChange={handleChange}
+                        value={joinData.email}
                     />
                     <Input
                         name="phone"
                         type='number'
                         placeholder="6281234567"
+                        onChange={handleChange}
+                        value={joinData.phone}
                     />
-                    <Button>Join Event</Button>
+                    <Button isDisabled={loading} onClick={handleSubmitJoin}>Join Event</Button>
                 </section>
             </div>
         </div>
