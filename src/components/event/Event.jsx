@@ -1,6 +1,6 @@
 "use client"
 
-import { AvatarGroup, Button, Input } from '@nextui-org/react'
+import { AvatarGroup, Button, Card, CardHeader, Input } from '@nextui-org/react'
 import Image from 'next/image'
 import React from 'react'
 import { useJoin } from './hooks/useJoin'
@@ -13,8 +13,8 @@ export const Event = ({ children }) => {
     const { id, image, name, description, location, date, author, participants, createdAt, updatedAt } = children
     return (
         <div className='flex flex-col'>
-            <div className=' w-screen bg-purple-200 bg-opacity-75 flex items-center justify-center'>
-                <div className=' bg-purple-500 w-[80vw] bg-opacity-75 flex items-center justify-center rounded-3xl'>
+            <div className=' w-screen bg-sky-300 bg-opacity-75 flex items-center justify-center'>
+                <div className=' bg-primary w-[80vw] bg-opacity-75 flex items-center justify-center rounded-3xl'>
                     <Image src={image && image.startsWith("http") ? image : urlImage} width={500} height={500} alt={"photo-event"}>
                     </Image>
                 </div>
@@ -54,7 +54,11 @@ export const Event = ({ children }) => {
 
                 </section>
 
-                <section className=' bg-blue-600 p-5 lg:w-[20vw] space-y-2'>
+                <Card isBlurred className=' bg-sky-300 p-5 lg:w-[20vw] space-y-2 m-auto'>
+                <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+                    <h4 className="font-bold text-large">Don't miss it!</h4>
+                    <p className="text-tiny font-bold">Sign yourself up now.</p>
+                </CardHeader>
                     <Input
                         name="name"
                         type='text'
@@ -76,8 +80,8 @@ export const Event = ({ children }) => {
                         onChange={handleChange}
                         value={joinData.phone}
                     />
-                    <Button isDisabled={loading} onClick={handleSubmitJoin}>Join Event</Button>
-                </section>
+                    <Button color="primary" isDisabled={loading} onClick={handleSubmitJoin}>Join Event</Button>
+                </Card>
             </div>
         </div>
     )
