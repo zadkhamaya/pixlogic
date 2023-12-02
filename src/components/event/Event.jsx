@@ -1,14 +1,15 @@
 "use client"
 
-import { Button, Input } from '@nextui-org/react'
+import { AvatarGroup, Button, Input } from '@nextui-org/react'
 import Image from 'next/image'
 import React from 'react'
 import { useJoin } from './hooks/useJoin'
+import { ParticipantCard } from './components/ParticipantCard'
 
 const urlImage = "https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-2.svg"
 
 export const Event = ({ children }) => {
-    const {loading, joinData, handleChange, handleSubmitJoin} = useJoin()
+    const { loading, joinData, handleChange, handleSubmitJoin } = useJoin()
     const { id, image, name, description, location, date, author, participants, createdAt, updatedAt } = children
     return (
         <div className='flex flex-col h-screen'>
@@ -39,6 +40,9 @@ export const Event = ({ children }) => {
                     <div>
                         <h3 className=' font-semibold text-2xl'>Participants</h3>
                         {/* mapping data participants */}
+                        <AvatarGroup className=' justify-start py-2' isGrid isBordered max={10}>
+                            {participants && participants.map(({ id, name }) => { return <ParticipantCard key={id} name={name}/> })}
+                        </AvatarGroup>
                     </div>
 
                     <p>Hosted by {author.name}</p>
