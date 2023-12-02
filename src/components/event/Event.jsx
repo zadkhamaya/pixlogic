@@ -5,12 +5,16 @@ import Image from 'next/image'
 import React from 'react'
 import { useJoin } from './hooks/useJoin'
 import { ParticipantCard } from './components/ParticipantCard'
+import moment from 'moment';
 
 const urlImage = "https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-2.svg"
 
 export const Event = ({ children }) => {
     const { loading, joinData, handleChange, handleSubmitJoin } = useJoin()
-    const { id, image, name, description, location, date, author, participants, createdAt, updatedAt } = children
+    const { id, image, name, description, location, date, author, participants, createdAt, updatedAt } = children;
+
+    const formattedCreatedAt = moment(new Date(createdAt)).format('MMMM Do YYYY, h:mm:ss a');
+    const formattedUpdatedAt = moment(new Date(updatedAt)).format('MMMM Do YYYY, h:mm:ss a');
     return (
         <div className='flex flex-col'>
             <div className=' w-screen bg-sky-300 bg-opacity-75 flex items-center justify-center'>
@@ -46,19 +50,19 @@ export const Event = ({ children }) => {
                     </div>
 
                     <div>
-                        <p>Hosted by {author.name}</p>
-                        <p>Created on {createdAt}</p>
-                        <p>Updated on {updatedAt}</p>
+                        <p className='font-semibold text-small'>Hosted by {author.name}</p>
+                        <p className=' text-small'>Created on {formattedCreatedAt}</p>
+                        <p className=' text-small'>Updated on {formattedUpdatedAt}</p>
                     </div>
 
 
                 </section>
 
                 <Card isBlurred className=' bg-sky-300 p-5 lg:w-[20vw] space-y-2 m-auto'>
-                <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                    <h4 className="font-bold text-large">Don't miss it!</h4>
-                    <p className="text-tiny font-bold">Sign yourself up now.</p>
-                </CardHeader>
+                    <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+                        <h4 className="font-bold text-large">Don't miss it!</h4>
+                        <p className="text-tiny font-bold">Sign yourself up now.</p>
+                    </CardHeader>
                     <Input
                         name="name"
                         type='text'
